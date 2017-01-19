@@ -1,0 +1,31 @@
+﻿@model PeopleCodingChallange.Models.People
+
+<div  class="container">
+    <div class="row">
+        @Html.ActionLink("Add People", "Add","People")
+    </div>
+
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 ">
+            @using (Ajax.BeginForm("Search", "People", new AjaxOptions
+            {
+                HttpMethod = "Post",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "update",
+                LoadingElementId = "load"
+
+            }))
+            {
+                @Html.TextBox("txt");
+                <input type="submit" value="Search" />
+
+            }
+        </div>
+    </div>
+    <div class="row" id="load"></div>
+    <div class="row" id="update"></div>
+
+</div>
